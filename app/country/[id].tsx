@@ -1,11 +1,13 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Button, Image, StyleSheet, Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
 import { Country, fetchCountries } from "../../services/countries";
 
 export default function CountryDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const { t } = useTranslation();
   const [country, setCountry] = useState<Country | null>(null);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function CountryDetail() {
       <Text>Capital: {country.capital?.[0] ?? "N/A"}</Text>
       <Text>Population: {country.population.toLocaleString()}</Text>
       <Text>Region: {country.region}</Text>
-      <Button title="Back" onPress={() => router.back()} />
+      <Button title={t("back")} onPress={() => router.back()} />
     </View>
   );
 }
