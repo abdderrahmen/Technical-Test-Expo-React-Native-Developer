@@ -1,50 +1,115 @@
-# Welcome to your Expo app 👋
+🌍 Countries Explorer
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile application built with Expo and TypeScript that allows users to explore countries, view details, and switch between languages.
 
-## Get started
+Developed as part of a technical test for evaluating skills in React Native (Expo), TypeScript, and project architecture.
 
-1. Install dependencies
+ Developed by
 
-   ```bash
-   npm install
-   ```
+Abderrahman Berrairia
+ Email: [abdou.mi@hotmail.com]
+ GitHub: https://github.com/abderrahmen
 
-2. Start the app
+ Location: Algeria
 
-   ```bash
-   npx expo start
-   ```
+ Features
 
-In the output, you'll find options to open the app in a
+ Display a list of all countries
+ Search countries by name (with debounce)
+ View detailed info: Flag, Capital, Population, Region
+ Multi-language support (English / Spanish)
+ Language persistence with AsyncStorage
+ Error, loading, and empty states
+ Pagination-ready FlatList
+ Unit tests with Jest + Testing Library
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+ Tech Stack
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Framework	Expo
+ (SDK 54)
+Language	TypeScript
+Navigation	Expo Router
 
-## Get a fresh project
+i18n	react-i18next + expo-localization
+State Management	React Hooks (useState, useEffect)
+API	fetch with RESTCountries API
 
-When you're ready, run:
+Storage	AsyncStorage
+Testing	Jest + React Native Testing Library
+Linting	ESLint + Prettier
 
-```bash
-npm run reset-project
-```
+ Getting Started
+Install dependencies
+npx expo start
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
+ You can test directly with Expo Go on your phone.
 
-To learn more about developing your project with Expo, look at the following resources:
+ Project Structure
+countriesexplorer/
+├── app/
+│   ├── _layout.tsx        # Root navigation stack
+│   ├── index.tsx          # Home screen (list of countries)
+│   └── country/[id].tsx   # Country details screen
+│
+├── components/            # Reusable UI components
+├── services/              # REST Countries API logic
+├── i18n/                  # Translations and language setup
+├── utils/                 # Hooks (e.g. debounce)
+├── __tests__/             # Jest unit tests
+│   ├── countries.test.ts
+│   └── HomeScreen.test.tsx
+├── jest.config.js         # Jest configuration
+├── jest.setup.js          # Test setup (mocks)
+├── package.json
+└── README.md
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+ API Reference
+All countries
+GET https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,cca3
 
-## Join the community
+Search by name
+GET https://restcountries.com/v3.1/name/{name}?fields=name,flags,capital,population,region,cca3
 
-Join our community of developers creating universal apps.
+ Technical Decisions
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Expo Router → Simplifies navigation and supports dynamic routes (country/[id].tsx)
+i18n with react-i18next → Multi-language support with persistent settings
+AsyncStorage → Saves preferred language between sessions
+Debounce Search → Prevents unnecessary API calls
+TypeScript → Provides static typing and improves maintainability
+FlatList → Efficient list rendering with pagination support
+Jest & RTL → Ensures correctness of UI and API integration
+
+ Testing
+Run all tests:
+npm test
+
+Includes:
+
+ countries.test.ts – verifies API fetch & search functionality
+ HomeScreen.test.tsx – ensures rendering and loading state work correctly
+
+ Environment
+Tool	Version
+Node.js	18.x
+Expo SDK	54
+React	19.1
+React Native	0.81.5
+TypeScript	5.9
+Jest	29+
+
+Bonus features:
+Flags displayed via PNG (API). SVG optional.
+Responsive layout using Flexbox.
+Easily extendable for state management or caching.
+
+ Conclusion
+
+This project demonstrates:
+A clean and scalable Expo architecture
+Good TypeScript practices
+Multi-language (i18n) configuration
+Proper state management & API handling
+Solid unit testing setup
+Clean UI/UX using React Native components
