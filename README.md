@@ -38,14 +38,14 @@ Storage	AsyncStorage
 Testing	Jest + React Native Testing Library
 Linting	ESLint + Prettier
 
- Getting Started
+Getting Started: 
 Install dependencies
 npx expo start
 
 
  You can test directly with Expo Go on your phone.
 
- Project Structure
+Project Structure
 countriesexplorer/
 ├── app/
 │   ├── _layout.tsx        # Root navigation stack
